@@ -31,5 +31,7 @@ func listerLesClients(writer http.ResponseWriter, request *http.Request) {
 		{Name: "Mary", City: "London", Zipcode: "W1A 0AX"},
 	}
 
+	writer.Header().Set("Content-Type", "application/json")
+
 	json.NewEncoder(writer).Encode(customers)
 }

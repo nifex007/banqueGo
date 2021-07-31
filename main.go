@@ -8,9 +8,9 @@ import (
 )
 
 type Customer struct {
-	Name string
-	City string
-	Zipcode string
+	Name    string	`json:"full_name"`
+	City    string	`json:"city"`
+	Zipcode string	`json:"zipcode"`
 }
 
 func main() {

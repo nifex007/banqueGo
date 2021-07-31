@@ -8,17 +8,20 @@ import (
 )
 
 type Customer struct {
-	Name    string	`json:"full_name"`
-	City    string	`json:"city"`
-	Zipcode string	`json:"zipcode"`
+	Name    string `json:"full_name"`
+	City    string `json:"city"`
+	Zipcode string `json:"zipcode"`
 }
 
 func main() {
+	port := ":8081"
 	// Routes
 	http.HandleFunc("/saluer", saluer)
 	http.HandleFunc("/clients", listerLesClients)
 	//  starts server in port 8081
-	log.Fatal(http.ListenAndServe("localhost:8081", nil))
+	fmt.Println("localhost @ "+port)
+	log.Fatal(http.ListenAndServe("localhost"+port, nil))
+
 }
 
 func saluer(writer http.ResponseWriter, request *http.Request) {

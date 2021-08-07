@@ -3,5 +3,5 @@ import "github.com/nifex007/banqueGo/app"
 
 
 func main() {
-	app.Start()
+	app.start()
 }

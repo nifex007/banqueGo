@@ -7,7 +7,7 @@ import (
 )
 
 
-func start() {
+func Start() {
 
 	port := ":8081"
 	// Routes

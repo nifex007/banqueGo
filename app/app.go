@@ -10,11 +10,12 @@ import (
 func Start() {
 
 	port := ":8081"
+	mux := http.NewServeMux()
 	// Routes
-	http.HandleFunc("/saluer", saluer)
-	http.HandleFunc("/clients", listerLesClients)
+	mux.HandleFunc("/saluer", saluer)
+	mux.HandleFunc("/clients", listerLesClients)
 	//  starts server in port 8081
 	fmt.Println("localhost @ "+port)
-	log.Fatal(http.ListenAndServe("localhost"+port, nil))
+	log.Fatal(http.ListenAndServe("localhost"+port, mux))
 
 }

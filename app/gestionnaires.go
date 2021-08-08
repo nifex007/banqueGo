@@ -13,8 +13,6 @@ type Customer struct {
 	Zipcode string `json:"zipcode" xml:"zipcode"`
 }
 
-
-
 func saluer(writer http.ResponseWriter, request *http.Request) {
 	fmt.Fprint(writer, "Bonjour le monde!")
 }
@@ -22,17 +20,16 @@ func saluer(writer http.ResponseWriter, request *http.Request) {
 func listerLesClients(writer http.ResponseWriter, request *http.Request) {
 	customers := []Customer{
 		{Name: "John", City: "Paris", Zipcode: "75008"},
-		{Name: "Mary", City: "London", Zipcode: "W1A 0AX"},
+		{Name: "Toke", City: "London", Zipcode: "W1A 0AX"},
 	}
 	jsonHeader := "application/json"
 	xmlHeader := "application/xml"
-	
-	if request.Header.Get("Content-Type") ==  xmlHeader {
+
+	if request.Header.Get("Content-Type") == xmlHeader {
 		writer.Header().Set("Content-Type", "application/xml")
 		xml.NewEncoder(writer).Encode(customers)
-	}else{
+	} else {
 		writer.Header().Set("Content-Type", jsonHeader)
 		json.NewEncoder(writer).Encode(customers)
 	}
 }
-

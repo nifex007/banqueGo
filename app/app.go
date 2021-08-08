@@ -4,18 +4,20 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"github.com/gorilla/mux"
+
 )
 
 
 func Start() {
 
 	port := ":8081"
-	mux := http.NewServeMux()
+	router := mux.NewRouter()
 	// Routes
-	mux.HandleFunc("/saluer", saluer)
-	mux.HandleFunc("/clients", listerLesClients)
+	router.HandleFunc("/saluer", saluer)
+	router.HandleFunc("/clients", listerLesClients)
 	//  starts server in port 8081
 	fmt.Println("localhost @ "+port)
-	log.Fatal(http.ListenAndServe("localhost"+port, mux))
+	log.Fatal(http.ListenAndServe("localhost"+port, router))
 
 }
